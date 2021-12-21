@@ -11,6 +11,7 @@ import { Input } from "postcss";
         let taskItem = {id: new Date().getTime, task : newTask, isDone: false, date: new Date() } 
         tasks = [...tasks, taskItem];
     }
+    
 
     const onKeyPress = event => {
         if(event.code == 'Enter') {
@@ -29,6 +30,10 @@ import { Input } from "postcss";
     }
     
 </script>
+
+<svelte:head>
+    <title>Svelte Tailwindcss TodoApp</title>
+</svelte:head>
 
 <!-- todo container -->
 <div class="container px-3 max-w-md mx-auto">
