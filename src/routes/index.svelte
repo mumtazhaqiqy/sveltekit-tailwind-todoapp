@@ -4,7 +4,8 @@ import { Input } from "postcss";
 
     let tasks = []
     let addTask
-    let newTask 
+    let newTask = ''; 
+    let info = '';
 
     // add new task
     const addNewTask = () => {
@@ -18,8 +19,9 @@ import { Input } from "postcss";
             if(newTask != ''){
                 addNewTask()
                 newTask = '';
+                info = '';
             } else {
-
+                info = 'new task is still empty ;)';
             }
         }
     }
@@ -36,11 +38,11 @@ import { Input } from "postcss";
 </svelte:head>
 
 <!-- todo container -->
-<div class="container px-3 max-w-md mx-auto">
+<div class="container px-3 mx-auto">
     <!-- todo wrapper -->
     <div class="bg-white rounded shadow px-4 py-4" x-data="app()">
-    <div class="title font-bold text-lg">Todo Application</div>
-    <div class="flex items-center text-sm mt-2">
+        <div class="title font-bold text-lg">Todo Application</div>
+        <div class="flex items-center text-sm mt-2">
         <button on:click={addTask.focus()}>
         <svg class="w-3 h-3 mr-3 focus:outline-none" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
             <path d="M12 4v16m8-8H4"></path>
@@ -49,7 +51,7 @@ import { Input } from "postcss";
         <span>Click to add task</span>
     </div>
     <input id="addTask" type="text" bind:this={addTask} bind:value="{newTask}" on:keypress="{onKeyPress}" placeholder="what is your plan for today" class=" rounded-sm shadow-sm px-4 py-2 border border-gray-200 w-full mt-4">
-
+    <p class="text-xs text-red-400 pt-2">{info}</p>
     <!-- todo list -->
     <ul class="todo-list mt-4">
         {#each tasks as item, index}
